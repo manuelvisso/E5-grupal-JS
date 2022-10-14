@@ -4,11 +4,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #252525;
+  background-color: #131415;
 }
 
 body {
   width: 100%;
+  color: white;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -75,7 +76,7 @@ header {
 main {
   max-width: 1440px;
   margin: 0 auto;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 /* HERO */
@@ -119,6 +120,7 @@ main {
   background: linear-gradient(98.81deg, #ffa100 -0.82%, #fb103d 101.53%);
   /* Drop Shadow */
   box-shadow: 11px 28px 50px rgba(20, 78, 90, 0.2);
+  border: none;
   border-radius: 15px;
   width: 166px;
   height: 50px;
@@ -150,4 +152,92 @@ main {
   top: 0px;
   z-index: 100;
   background: transparent;
+}
+
+/* RECOMENDADOS */
+
+.recomendaciones {
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recomendacion-container {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.recomendacion-card * {
+  background: #252525;
+}
+
+.recomendacion-card {
+  display: flex;
+  width: 350px;
+  height: 100px;
+  border-radius: 15px;
+  background: #252525;
+  box-shadow: 0px 0px 50px rgba(1, 2, 7, 0.5);
+  gap: 20px;
+  padding: 0 15px;
+}
+
+.recomend-img-container {
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recomend-img-container img {
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
+}
+
+.recomend-card-text {
+  width: 215px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.recomend-btn-container {
+  width: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 15px;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: #4d4d4d;
+}
+
+.card-price {
+  font-size: 19px;
+  font-weight: 700;
+  background: linear-gradient(98.81deg, #ffa100 -0.82%, #ff005c 101.53%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.agregar-btn {
+  background: linear-gradient(98.81deg, #ffa100 -0.82%, #fb103d 101.53%);
+  border: none;
+  border-radius: 15px;
+  width: 85px;
+  height: 30px;
+  color: #fff;
+  cursor: pointer;
 }
