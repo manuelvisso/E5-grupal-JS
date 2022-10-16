@@ -7,8 +7,13 @@
     <title>ZAPPI || NUCBA</title>
 
     <link rel="stylesheet" href="/assets/styles/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/2bbf1df7bb.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
+    <div class="overlay"></div>
     <header>
       <div class="logo-container">
         <img
@@ -27,11 +32,41 @@
           </li>
           <li class="navbar-item">
             <a href="#perfil">
-              <img class="account" src="/assets/img/Fill 4.svg" alt="" />
-              <img class="account" src="/assets/img/Fill 1.svg" alt="" />
+              <i class="fa-solid fa-user" id="account"></i>
             </a>
           </li>
         </ul>
+        <div class="cart-container">
+          <div>
+            <i class="fa-solid fa-rectangle-xmark close-icon"></i>
+          </div>
+          <p>Tus productos</p>
+          <div>
+            <article class="cart-card">
+              <div class="recomend-img-container">
+                <img
+                  src="/assets/img/pexels-ana-madeleine-uribe-2762939.jpg"
+                  alt="Pizza"
+                  srcset=""
+                />
+              </div>
+              <div class="recomend-card-text">
+                <p class="card-title">Bennazianna</p>
+                <p class="card-subtitle">La más completa</p>
+                <p class="card-price">$ 3650</p>
+              </div>
+              <div class="cart-btn-container">
+                <button type="button" class="restar-btn">-</button>
+                <p>X</p>
+                <button type="button" class="sumar-btn">+</button>
+              </div>
+            </article>
+          </div>
+          <div></div>
+          <div></div>
+          <button></button>
+          <p></p>
+        </div>
       </nav>
     </header>
     <main>
@@ -411,5 +446,15 @@
         </div>
       </div>
     </main>
+    <footer class="footer">
+      <div class="info">
+        <a href="#terminos-uso">Términos de Uso</a>
+        <a href="#trabaja">Trabajá con Nosotros</a>
+        <a href="#soporte">Soporte</a>
+      </div>
+      <div class="footer-msg">
+        <p>Hecho️ con ❤ en <span>NUCBAZAPPI</span></p>
+      </div>
+    </footer>
   </body>
 </html>
