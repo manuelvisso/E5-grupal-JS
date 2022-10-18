@@ -43,10 +43,10 @@ header {
 /* NAVBAR */
 
 .navbar-container {
-  /* color: #fff;
+  color: #fff;
   display: flex;
   justify-content: space-around;
-  list-style: none; */
+  list-style: none;/*hast aca comentado*/
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -95,8 +95,8 @@ header {
   height: 900px;
   padding: 30px 20px;
   z-index: 9999;
-  /* transform: translate(200%);
-  transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99); */
+   transform: translate(200%); 
+  transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99); /*hastaca comentado*/
 }
 
 .cart-close-btn {
@@ -244,6 +244,7 @@ main {
   margin: 0 auto;
 }
 
+
 /* PRIMER CONTENEDOR */
 .zappi-container {
   display: flex;
@@ -285,6 +286,16 @@ main {
   font-weight: bold;
   cursor: pointer;
 }
+/*Segundo Contenedor*/
+
+.pizza-images{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  }
+
 
 .pizza-34 {
   position: relative;
@@ -528,6 +539,21 @@ main {
 }
 
 /*MEDIA QUERIES*/
+
+@media(max-width: 1400px) {
+
+.pizza-34{
+  width: 50%;
+  height:60%;
+
+}
+.pizza-1{
+  width: 50%;
+  height: auto;
+
+}
+
+}
 
 @media (max-width: 900px) {
   .pizza-images {
