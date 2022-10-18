@@ -37,11 +37,49 @@
           </li>
         </ul>
         <div class="cart-container">
-          <div>
-            <i class="fa-solid fa-rectangle-xmark close-icon"></i>
-          </div>
+          <button type="button" class="cart-close-btn">x</button>
           <p>Tus productos</p>
-          <div>
+          <div class="cart-items-container">
+            <article class="cart-card">
+              <div class="recomend-img-container">
+                <img
+                  src="/assets/img/pexels-ana-madeleine-uribe-2762939.jpg"
+                  alt="Pizza"
+                  srcset=""
+                />
+              </div>
+              <div class="recomend-card-text">
+                <p class="card-title">Bennazianna</p>
+                <p class="card-subtitle">La más completa</p>
+                <p class="card-price">$ 3650</p>
+              </div>
+              <div class="cart-btn-container">
+                <button type="button" class="restar-btn">-</button>
+                <p>X</p>
+                <button type="button" class="sumar-btn">+</button>
+              </div>
+            </article>
+
+            <article class="cart-card">
+              <div class="recomend-img-container">
+                <img
+                  src="/assets/img/pexels-ana-madeleine-uribe-2762939.jpg"
+                  alt="Pizza"
+                  srcset=""
+                />
+              </div>
+              <div class="recomend-card-text">
+                <p class="card-title">Bennazianna</p>
+                <p class="card-subtitle">La más completa</p>
+                <p class="card-price">$ 3650</p>
+              </div>
+              <div class="cart-btn-container">
+                <button type="button" class="restar-btn">-</button>
+                <p>X</p>
+                <button type="button" class="sumar-btn">+</button>
+              </div>
+            </article>
+
             <article class="cart-card">
               <div class="recomend-img-container">
                 <img
@@ -62,10 +100,27 @@
               </div>
             </article>
           </div>
-          <div></div>
-          <div></div>
-          <button></button>
-          <p></p>
+          <div class="cart-subtotal-container">
+            <p>
+              <span class="cart-subtotal-title">Subtotal:</span>
+              <span class="cart-subtotal-amount">$4.890</span>
+            </p>
+            <p>
+              <span class="cart-subtotal-title">Envío:</span>
+              <span class="cart-subtotal-amount">Gratis</span>
+            </p>
+          </div>
+          <div class="cart-linea"></div>
+          <div class="cart-subtotal-container">
+            <p>
+              <span class="cart-total-title">Total:</span>
+              <span class="cart-total-amount">$4.890</span>
+            </p>
+          </div>
+          <div class="cart-comprar-container">
+            <button type="submit" class="comprar-btn">COMPRAR</button>
+            <a href="#vermas" class="ver-mas">Ver más productos</a>
+          </div>
         </div>
       </nav>
     </header>
