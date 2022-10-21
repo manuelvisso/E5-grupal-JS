@@ -199,7 +199,7 @@
       <div class="category-container section-container">
         <p>Categorías</p>
         <div class="category-card-container">
-          <article class="category-card">
+          <button class="categoria active" data-categoria="popular">
             <div class="category-img-container">
               <img
                 src="/assets/img/pizza 1.png"
@@ -216,9 +216,9 @@
             </div>
             <p class="card-title">Populares</p>
             <div class="border"></div>
-          </article>
+          </button>
 
-          <article class="category-card">
+          <button class="categoria" data-categoria="pizzas">
             <div class="category-img-container">
               <img
                 src="/assets/img/image 34.png"
@@ -235,9 +235,9 @@
             </div>
             <p class="card-title">Pizzas</p>
             <div class="border"></div>
-          </article>
+          </button>
 
-          <article class="category-card">
+          <button class="categoria" data-categoria="hamburguesas">
             <div class="category-img-container">
               <img
                 src="/assets/img/burger 1.svg"
@@ -254,9 +254,9 @@
             </div>
             <p class="card-title">Hamburguesas</p>
             <div class="border"></div>
-          </article>
+          </button>
 
-          <article class="category-card">
+          <button class="categoria" data-categoria="napapuki">
             <div class="category-img-container">
               <img
                 src="/assets/img/fries 2.svg"
@@ -273,9 +273,9 @@
             </div>
             <p class="card-title">Napapuki</p>
             <div class="border"></div>
-          </article>
+          </button>
 
-          <article class="category-card">
+          <button class="categoria" data-categoria="wraps">
             <div class="category-img-container">
               <img
                 src="/assets/img/buritto 1.svg"
@@ -292,9 +292,9 @@
             </div>
             <p class="card-title">Wraps</p>
             <div class="border"></div>
-          </article>
+          </button>
 
-          <article class="category-card">
+          <button class="categoria" data-categoria="mexican">
             <div class="category-img-container">
               <img
                 src="/assets/img/taco 1.svg"
@@ -311,9 +311,9 @@
             </div>
             <p class="card-title">Mexican Food</p>
             <div class="border"></div>
-          </article>
+          </button>
 
-          <article class="category-card">
+          <button class="categoria" data-categoria="batidos">
             <div class="category-img-container">
               <img
                 src="/assets/img/float 1.svg"
@@ -330,33 +330,13 @@
             </div>
             <p class="card-title">Batidos</p>
             <div class="border"></div>
-          </article>
+          </button>
         </div>
       </div>
 
       <div class="filter-results section-container">
         <p>Los más populares</p>
-        <div class="filter-results-container" id="product-stock">
-          <article class="filter-results-card">
-            <div class="filter-img-container">
-              <img
-                src="/assets/img/pexels-eneida-nieves-905847.jpg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="filter-card-text">
-              <div>
-                <p class="card-title">La Mr. Pit</p>
-                <p class="card-subtitle">Sólo para expertos</p>
-                <p class="card-price">$ 350</p>
-              </div>
-              <div class="filter-btn-container">
-                <button type="button" class="agregar-btn">Agregar</button>
-              </div>
-            </div>
-          </article>
-          <!-- ESTAS SE ELIMINAN PORQUE SE RENDERIZAN CON JS -->
+        <div class="filter-results-container" id="product-menu">
           <!-- <article class="filter-results-card">
             <div class="filter-img-container">
               <img
@@ -375,129 +355,7 @@
                 <button type="button" class="agregar-btn">Agregar</button>
               </div>
             </div>
-          </article>
-
-          <article class="filter-results-card">
-            <div class="filter-img-container">
-              <img
-                src="/assets/img/pexels-eneida-nieves-905847.jpg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="filter-card-text">
-              <div>
-                <p class="card-title">La Mr. Pit</p>
-                <p class="card-subtitle">Sólo para expertos</p>
-                <p class="card-price">$ 350</p>
-              </div>
-              <div class="filter-btn-container">
-                <button type="button" class="agregar-btn">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="filter-results-card">
-            <div class="filter-img-container">
-              <img
-                src="/assets/img/pexels-eneida-nieves-905847.jpg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="filter-card-text">
-              <div>
-                <p class="card-title">La Mr. Pit</p>
-                <p class="card-subtitle">Sólo para expertos</p>
-                <p class="card-price">$ 350</p>
-              </div>
-              <div class="filter-btn-container">
-                <button type="button" class="agregar-btn">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="filter-results-card">
-            <div class="filter-img-container">
-              <img
-                src="/assets/img/pexels-eneida-nieves-905847.jpg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="filter-card-text">
-              <div>
-                <p class="card-title">La Mr. Pit</p>
-                <p class="card-subtitle">Sólo para expertos</p>
-                <p class="card-price">$ 350</p>
-              </div>
-              <div class="filter-btn-container">
-                <button type="button" class="agregar-btn">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="filter-results-card">
-            <div class="filter-img-container">
-              <img
-                src="/assets/img/pexels-eneida-nieves-905847.jpg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="filter-card-text">
-              <div>
-                <p class="card-title">La Mr. Pit</p>
-                <p class="card-subtitle">Sólo para expertos</p>
-                <p class="card-price">$ 350</p>
-              </div>
-              <div class="filter-btn-container">
-                <button type="button" class="agregar-btn">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="filter-results-card">
-            <div class="filter-img-container">
-              <img
-                src="/assets/img/pexels-eneida-nieves-905847.jpg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="filter-card-text">
-              <div>
-                <p class="card-title">La Mr. Pit</p>
-                <p class="card-subtitle">Sólo para expertos</p>
-                <p class="card-price">$ 350</p>
-              </div>
-              <div class="filter-btn-container">
-                <button type="button" class="agregar-btn">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="filter-results-card">
-            <div class="filter-img-container">
-              <img
-                src="/assets/img/pexels-eneida-nieves-905847.jpg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="filter-card-text">
-              <div>
-                <p class="card-title">La Mr. Pit</p>
-                <p class="card-subtitle">Sólo para expertos</p>
-                <p class="card-price">$ 350</p>
-              </div>
-              <div class="filter-btn-container">
-                <button type="button" class="agregar-btn">Agregar</button>
-              </div>
-            </div>
           </article> -->
-
-          <!-- HASTA ACÁ S SE ELIMINAN LAS QUE SE RENDERIZAN CON JS -->
         </div>
       </div>
     </main>
@@ -512,7 +370,7 @@
       </div>
     </footer>
 
-    <script src="main.js"></script>
-    <script src="stock.js"></script>
+    <script src="/assets/stock.js"></script>
+    <script src="/assets/main.js"></script>
   </body>
 </html>
