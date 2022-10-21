@@ -121,7 +121,7 @@ const stockProductos = [
     nombre: "Tacos de Pollo",
     descripcion: "Como el clasico pero de Pollo",
     precio: 1100,
-    categoria: "mexican food",
+    categoria: "mexican",
     popular: false,
     img: "./assets/img-nuevas/tacos-pollo.jpg",
   },
