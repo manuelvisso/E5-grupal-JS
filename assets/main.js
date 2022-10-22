@@ -27,18 +27,20 @@ const renderProduct = (product) => {
   </article>`;
 };
 
-const filteredProducts = (categoria) => {
+//PARA FILTRAR LOS OBJETOS QUE CUMPLAN CON LA CATEGORIA
+const filtrarProductos = (categoria) => {
   const filterProducts = stockProductos.filter(
     (el) => el.categoria === categoria
   );
   products.innerHTML = filterProducts.map(renderProduct).join("");
 };
 
-const changeFilter = (e) => {
-  const selectedBtn = e.target.dataset.categoria;
-  changeState(selectedBtn);
+//PARA PASARLE EL PARAMETRO A LA FUNCION ANTERIOR Y RENDERIZAR
+const filteredProducts = (e) => {
+  filtrarProductos(e.target.dataset.categoria);
 };
 
+// cambiar el estilo del boton seleccionado
 const changeState = (selectedBtn) => {
   const categ = [...categorias];
   categ.forEach((btn) => {
@@ -50,16 +52,21 @@ const changeState = (selectedBtn) => {
   });
 };
 
-// const filtrarProductos = (e) => {
-//   if (!e.target.dataset.categoria) {
-//     console.log("click");
-//   }
-//   console.log("hola");
-// };
+const changeFilter = (e) => {
+  const selectedBtn = e.target.dataset.categoria;
+  changeState(selectedBtn);
+};
+
+// ejecuta el filtrado y cambio de estilo del botón
+const applyFilter = (e) => {
+  filteredProducts(e);
+  changeFilter(e);
+};
 
 const init = () => {
-  // renderPopularProducts();
-  changeFilter();
+  initialRender();
+  categoryContainer.addEventListener("click", applyFilter);
+  categoryContainer.addEventListener("click", renderPopularProducts);
 };
 
 init();

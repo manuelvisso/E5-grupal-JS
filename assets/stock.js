@@ -190,7 +190,16 @@ const stockProductos = [
   },
 ];
 
-// const renderPopularProducts = () => {
-//   const popularProducts = stockProductos.filter((el) => el.popular === true);
-//   products.innerHTML = popularProducts.map(renderProduct).join("");
-// };
+//renderiza los items popular al cargar la página
+const initialRender = () => {
+  const popularProducts = stockProductos.filter((el) => el.popular === true);
+  products.innerHTML = popularProducts.map(renderProduct).join("");
+};
+
+//renderiza los items populares al hacer click en popular
+const renderPopularProducts = (e) => {
+  if (e.target.dataset.categoria === "popular") {
+    console.log(e.target.dataset.categoria);
+    initialRender();
+  }
+};
