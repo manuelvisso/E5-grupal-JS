@@ -1,6 +1,7 @@
 const products = document.querySelector("#product-menu");
 const categoryContainer = document.querySelector(".category-card-container");
 const categorias = document.querySelectorAll(".categoria");
+const resultsTitle = document.querySelector(".results-title");
 
 const renderProduct = (product) => {
   const { nombre, descripcion, precio, img } = product;
@@ -27,6 +28,14 @@ const renderProduct = (product) => {
   </article>`;
 };
 
+const renderTitle = (categoria) => {
+  if (categoria === "popular") {
+    resultsTitle.innerHTML = `Los más populares`;
+  } else {
+    resultsTitle.innerHTML = `${categoria}`;
+  }
+};
+
 //PARA FILTRAR LOS OBJETOS QUE CUMPLAN CON LA CATEGORIA
 const filtrarProductos = (categoria) => {
   const filterProducts = stockProductos.filter(
@@ -35,9 +44,10 @@ const filtrarProductos = (categoria) => {
   products.innerHTML = filterProducts.map(renderProduct).join("");
 };
 
-//PARA PASARLE EL PARAMETRO A LA FUNCION ANTERIOR Y RENDERIZAR
+//PARA PASARLE EL PARAMETRO A LA FUNCION ANTERIOR Y RENDERIZAR EL TITULO
 const filteredProducts = (e) => {
   filtrarProductos(e.target.dataset.categoria);
+  renderTitle(e.target.dataset.categoria);
 };
 
 // cambiar el estilo del boton seleccionado
