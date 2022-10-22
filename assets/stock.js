@@ -112,7 +112,7 @@ const stockProductos = [
     nombre: "Tacos de Carne",
     descripcion: "Lo clasico de Mexico wey!",
     precio: 1000,
-    categoria: "mexican food",
+    categoria: "mexican",
     popular: false,
     img: "./assets/img-nuevas/tacos-carne.jpg",
   },
@@ -130,7 +130,7 @@ const stockProductos = [
     nombre: "Hamburguesa Especial",
     descripcion: "Una clasica de la casa",
     precio: 550,
-    categoria: "hamburguesas",
+    categoria: "amburguesas",
     popular: false,
     img: "./assets/img-nuevas/hamburguesa-especial.jpg",
   },
@@ -190,7 +190,15 @@ const stockProductos = [
   },
 ];
 
-// const renderPopularProducts = () => {
-//   const popularProducts = stockProductos.filter((el) => el.popular === true);
-//   products.innerHTML = popularProducts.map(renderProduct).join("");
-// };
+//renderiza los items popular al cargar la página
+const initialRender = () => {
+  const popularProducts = stockProductos.filter((el) => el.popular === true);
+  products.innerHTML = popularProducts.map(renderProduct).join("");
+};
+
+//renderiza los items populares al hacer click en popular
+const renderPopularProducts = (e) => {
+  if (e.target.dataset.categoria === "popular") {
+    initialRender();
+  }
+};
