@@ -123,7 +123,7 @@ img:"./assets/img/pexels-ana-madeleine-uribe-2762939.jpg",
   precio:870,
   categoria:"pizzas",
   popular:false,
-  img:"./assets/img/pexels-freestocksprg-391995.jpg",
+  img:"./assets/img/pexels-freestocksorg-391995.jpg",
   },
   
 
