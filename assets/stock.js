@@ -66,7 +66,7 @@ const stockProductos = [
     id: 8,
     nombre: "Nick Gi",
     descripcion: "La que desaparece",
-    precio: 0,
+    precio: "Gratis",
     categoria: "pizzas",
     popular: true,
     img: "./assets/img/pexels-cats-coming-365459.jpg",
@@ -107,8 +107,38 @@ const stockProductos = [
     popular: false,
     img: "./assets/img-nuevas/pizza-peperoni.jpg",
   },
+{ 
+id:13,
+nombre:"Bennaziana",
+descripcion:"La mas completa",
+precio:3650,
+categoria:"pizzas",
+popular:false,
+img:"./assets/img/pexels-ana-madeleine-uribe-2762939.jpg",
+},
+{ 
+  id:14,
+  nombre:"Tronco-pizza",
+  descripcion:"Para todo el dia",
+  precio:870,
+  categoria:"pizzas",
+  popular:false,
+  img:"./assets/img/pexels-freestocksprg-391995.jpg",
+  },
+  
+
+  { 
+    id:15,
+    nombre:"Papas-Provenzal",
+    descripcion:"Van como piña",
+    precio:360,
+    categoria:"papas",
+    popular:false,
+    img:"./assets/img/pexels-valeria-boltneva-1893555.jpg",
+    },
+
   {
-    id: 13,
+    id: 16,
     nombre: "Tacos de Carne",
     descripcion: "Lo clasico de Mexico wey!",
     precio: 1000,
@@ -117,7 +147,7 @@ const stockProductos = [
     img: "./assets/img-nuevas/tacos-carne.jpg",
   },
   {
-    id: 14,
+    id: 17,
     nombre: "Tacos de Pollo",
     descripcion: "Como el clasico pero de Pollo",
     precio: 1100,
@@ -126,16 +156,16 @@ const stockProductos = [
     img: "./assets/img-nuevas/tacos-pollo.jpg",
   },
   {
-    id: 15,
+    id: 18,
     nombre: "Hamburguesa Especial",
     descripcion: "Una clasica de la casa",
     precio: 550,
-    categoria: "amburguesas",
+    categoria: "hamburguesas",
     popular: false,
     img: "./assets/img-nuevas/hamburguesa-especial.jpg",
   },
   {
-    id: 16,
+    id:19,
     nombre: "Hamburguesa de Panceta",
     descripcion: "Pura panceta como te gusta!",
     precio: 650,
@@ -144,7 +174,7 @@ const stockProductos = [
     img: "./assets/img-nuevas/hamburguesa-panceta.jpg",
   },
   {
-    id: 17,
+    id: 20,
     nombre: "Hamburguesa de Pollo",
     descripcion: "Elegida por unos cuantos...",
     precio: 750,
@@ -153,7 +183,7 @@ const stockProductos = [
     img: "./assets/img-nuevas/hamburguesa-pollo.jpg",
   },
   {
-    id: 18,
+    id: 21,
     nombre: "Hamburguesa Triple",
     descripcion: "Con esta no te quedas con hambre!",
     precio: 850,
@@ -162,7 +192,7 @@ const stockProductos = [
     img: "./assets/img-nuevas/hamburguesa-triple.jpg",
   },
   {
-    id: 19,
+    id: 22,
     nombre: "Batido de chocolate",
     descripcion: "El clasico que se llevan todos!",
     precio: 250,
@@ -171,7 +201,7 @@ const stockProductos = [
     img: "./assets/img-nuevas/batido-chocolate.jpg",
   },
   {
-    id: 20,
+    id: 23,
     nombre: "Batido de durazno",
     descripcion: "El mas fresco de todos!",
     precio: 150,
@@ -180,7 +210,7 @@ const stockProductos = [
     img: "./assets/img-nuevas/batido-durazno.jpg",
   },
   {
-    id: 21,
+    id: 24,
     nombre: "Batido de Frutilla",
     descripcion: "Nuestra especialidad",
     precio: 300,
