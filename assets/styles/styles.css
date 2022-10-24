@@ -534,7 +534,6 @@ main {
   font-weight: 700;
   background: linear-gradient(98.81deg, #ffa100 -0.82%, #ff005c 101.53%);
   -webkit-background-clip: text;
-  background-clip: unset;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
