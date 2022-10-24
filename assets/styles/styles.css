@@ -529,6 +529,15 @@ main {
   align-items: flex-end;
 }
 
+.error-msg {
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(98.81deg, #ffa100 -0.82%, #ff005c 101.53%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
 /*FOOTER */
 
 .footer {

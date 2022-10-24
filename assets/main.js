@@ -41,13 +41,25 @@ const filtrarProductos = (categoria) => {
   const filterProducts = stockProductos.filter(
     (el) => el.categoria === categoria
   );
-  products.innerHTML = filterProducts.map(renderProduct).join("");
+
+  if (filterProducts.length > 0) {
+    products.innerHTML = filterProducts.map(renderProduct).join("");
+  } else {
+    renderError();
+  }
 };
 
 //PARA PASARLE EL PARAMETRO A LA FUNCION ANTERIOR Y RENDERIZAR EL TITULO
 const filteredProducts = (e) => {
   filtrarProductos(e.target.dataset.categoria);
   renderTitle(e.target.dataset.categoria);
+};
+
+//MENSAJE DE ERROR POR FALTA DE STOCK
+const renderError = () => {
+  products.innerHTML = `          <p class="error-msg">
+  Lo sentimos, en este momento no disponemos stock de estos productos.
+</p>`;
 };
 
 // cambiar el estilo del boton seleccionado
