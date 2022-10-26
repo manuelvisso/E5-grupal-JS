@@ -6,7 +6,7 @@ const productsCart=document.querySelector(".cart-container");
 const precioFinal=document.querySelector(".cart-total-amount");
 const btnComprar=document.querySelector(".comprar-btn");
 const cartBtn=document.querySelector(".cart-close-btn");
-const btndelete=document.querySelector(".delete-order");
+const btnDelete=document.querySelector(".delete-order");
 const cartMenu=document.querySelector(".cart");
 const successModal = document.querySelector(".add-modal");
 
@@ -106,11 +106,13 @@ const applyFilter = (e) => {
   changeFilter(e);
 };
 
+
+
 //agregar al carrito
 
 const renderCartProduct=(cartProduct)=>{
 
- const { id,nombre ,descripcion, precio, img ,cantidad} = cartProduct;
+ const { id,nombre ,descripcion, precio, img ,cantidad,Total} = cartProduct;
 return`
 <div class="cart-items-container">
             <article class="cart-card">
@@ -145,7 +147,7 @@ return`
             <div class="cart-subtotal-container">
               <p>
                 <span class="cart-total-title">Total:</span>
-                <span class="cart-total-amount">${showTotal}</span>
+                <span class="cart-total-amount">${Total}</span>
               </p>
             </div>
             <div class="cart-comprar-container">
@@ -170,7 +172,7 @@ productsCart.innerHTML=cart.map(renderCartProduct).join("")
 }
 
 
-const getCartTotal = () => {
+const Total = () => {
   return cart.reduce(
     (acc, cur) => acc + Number(cur.precio) * Number(cur.cantidad),
     0
@@ -179,7 +181,7 @@ const getCartTotal = () => {
 
 const showTotal=()=>{
 
-  total.innerHTML=`${getCartTotal().toFixed(2)}`;
+  Total.innerHTML=`${Total().toFixed(2)}`;
 
 }
 
@@ -224,8 +226,8 @@ const checkCartState = () => {
   saveLocalStorage(cart);
   renderCart(cart);
   showTotal(cart);
-  disableBtn(buyBtn);
-  disableBtn(deleteBtn);
+  disableBtn(btnComprar);
+  disableBtn(btnDelete);
 };
 
 const showSuccessModal = (msg) => {
@@ -253,6 +255,74 @@ const addProduct = (e) => {
   checkCartState();
 };
 
+const extraerProduct=(existe)=>{
+
+cart=cart.map((cartProduct)=>{
+
+return cartProduct.id===existe.id
+? { ...cartProduct, cantidad: cartProduct.cantidad - 1 }
+      : cartProduct;
+  });
+};
+
+
+const removeProductFromCart = (existe) => {
+  cart = cart.filter((product) => product.id !== existe.id);
+  checkCartState();
+};
+
+const sacarProducto = (id) => {
+  const existe= cart.find((item) => item.id === id);
+
+
+  if (existe.cantidad === 1) {
+    if (window.confirm("¿Desea Eliminar el producto del carrito?")) {
+      removeProductFromCart(existe);
+    }
+    return;
+  }
+  extraerProduct(existe);
+};
+
+const sumarProducto = (id) => {
+  const existe = cart.find((item) => item.id === id);
+  addUnitToProduct(existe);
+};
+
+const cantidades = (e) => {
+  if (e.target.classList.contains("down")) {
+    sacarProducto(e.target.dataset.id);
+  } else if (e.target.classList.contains("up")) {
+    sumarProducto(e.target.dataset.id);
+  }
+  checkCartState();
+};
+const resetCartItems = () => {
+  cart = [];
+  checkCartState();
+};
+
+const completarCarrito = (confirmMsg, successMsg) => {
+  if (!cart.length) return;
+  if (window.confirm(confirmMsg)) {
+    resetCartItems();
+    alert(successMsg);
+  }
+};
+
+const completarCompra = () => {
+  completarCarrito(
+    "¿Desea completar su compra?",
+    "La compra se ha realizado correctamente"
+  );
+};
+const BorrarCarrito= () => {
+  completarCarrito(
+    "¿Está seguro de que desea vaciar el carrito?",
+    "No hay productos en el carrito"
+  );
+};
+
 
 
 
@@ -260,7 +330,10 @@ const addProduct = (e) => {
   const init = () => {
   initialRender();
   categoryContainer.addEventListener("click", applyFilter);
-  categoryContainer.addEventListener("click", renderPopularProducts);
+  categoryContainer.addEventListener("click", renderPopularProducts)
+ 
+
+  ;
 };
 
 init();
