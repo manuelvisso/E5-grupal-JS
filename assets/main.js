@@ -2,6 +2,27 @@ const products = document.querySelector("#product-menu");
 const categoryContainer = document.querySelector(".category-card-container");
 const categorias = document.querySelectorAll(".categoria");
 const resultsTitle = document.querySelector(".results-title");
+const productsCart=document.querySelector(".cart-container");
+const precioFinal=document.querySelector(".cart-total-amount");
+const btnComprar=document.querySelector(".comprar-btn");
+const cartBtn=document.querySelector(".cart-close-btn");
+const btndelete=document.querySelector(".delete-order");
+const cartMenu=document.querySelector(".cart");
+const successModal = document.querySelector(".add-modal");
+
+
+
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+
+const saveLocalStorage=(cartList)=>{
+
+localStorage.setItem("cart",JSON.stringify(cartList));
+
+}
+
+
+
+
 
 const renderProduct = (product) => {
   const { nombre, descripcion, precio, img } = product;
@@ -85,7 +106,158 @@ const applyFilter = (e) => {
   changeFilter(e);
 };
 
-const init = () => {
+//agregar al carrito
+
+const renderCartProduct=(cartProduct)=>{
+
+ const { id,nombre ,descripcion, precio, img ,cantidad} = cartProduct;
+return`
+<div class="cart-items-container">
+            <article class="cart-card">
+              
+                <img src${img} alt=" Producto en el carrito" />
+              </div>
+              <div class="product-info">
+                <p class="card-title">${nombre}</p>
+                <p class="card-subtitle">${descripcion}</p>
+                <p class="card-price">${precio}</p>
+              </div>
+              <div class="cart-btn-container">
+                <button type="button" class="restar-btn"data-id=${id} >-</button>
+                <p>X</p>
+                <button type="button" class="sumar-btn" data-id=${id}>+</button>
+              <p class="cantidad">${cantidad}</p>
+
+              </div>
+
+              </article>
+              <div class="cart-subtotal-container">
+              <p>
+                <span class="cart-subtotal-title">Subtotal:</span>
+                <span class="cart-subtotal-amount">$4.890</span>
+              </p>
+              <p>
+                <span class="cart-subtotal-title">Envío:</span>
+                <span class="cart-subtotal-amount">Gratis</span>
+              </p>
+            </div>
+            <div class="cart-linea"></div>
+            <div class="cart-subtotal-container">
+              <p>
+                <span class="cart-total-title">Total:</span>
+                <span class="cart-total-amount">${showTotal}</span>
+              </p>
+            </div>
+            <div class="cart-comprar-container">
+              <button type="submit" class="comprar-btn">COMPRAR</button>
+              <button type="submit" class="delete-order">CANCELAME</button>
+              <a href="#vermas" class="ver-mas">Ver más productos</a>
+            </div>
+            
+
+`
+
+}
+
+const renderCart=()=>{
+
+if (!cart.length){
+productsCart.innerHTML=`<p class="nada">No Hay Productos en el carrito.</p>`;
+return;
+
+}
+productsCart.innerHTML=cart.map(renderCartProduct).join("")
+}
+
+
+const getCartTotal = () => {
+  return cart.reduce(
+    (acc, cur) => acc + Number(cur.precio) * Number(cur.cantidad),
+    0
+  );
+};
+
+const showTotal=()=>{
+
+  total.innerHTML=`${getCartTotal().toFixed(2)}`;
+
+}
+
+const disableBtn=(btn)=>{
+
+if(!cart.length){
+
+btn.classList.add("disabled")
+
+return;
+}
+btn.classList.remove("disabled")
+
+}
+
+
+const addUnitToProduct=(product)=>{
+  cart=cart.map((cartProduct)=>{
+    return cartProduct.id===product.id
+    ?{...cartProduct,cantidad:cartProduct.cantidad+1}  
+:cartProduct
+});
+};
+
+const createCartProduct=(product)=>{
+cart=[...cart,{...product,cantidad:1}];
+
+};
+
+
+const existe=(product)=>{
+return cart.find((item)=>item.id===product.id)
+
+};
+
+const crearData=(id,nombre ,descripcion, precio, img ,cantidad)=>{
+return{id,nombre ,descripcion, precio, img ,cantidad}
+
+};
+
+const checkCartState = () => {
+  saveLocalStorage(cart);
+  renderCart(cart);
+  showTotal(cart);
+  disableBtn(buyBtn);
+  disableBtn(deleteBtn);
+};
+
+const showSuccessModal = (msg) => {
+  successModal.classList.add("active-modal");
+  successModal.textContent = msg;
+  setTimeout(() => {
+    successModal.classList.remove("active-modal");
+  }, 1500);
+};
+
+
+const addProduct = (e) => {
+  if (!e.target.classList.contains("btn-add")) return;
+  const {id,nombre ,descripcion, precio, img ,cantidad } = e.target.dataset;
+
+  const product = crearData(id,nombre ,descripcion, precio, img ,cantidad);
+
+  if (existe(product)) {
+    addUnitToProduct(product);
+    showSuccessModal("Se agregó una unidad ");
+  } else {
+   createCartProduct(product);
+    showSuccessModal("El producto se ha agregado al carrito");
+  }
+  checkCartState();
+};
+
+
+
+
+
+  const init = () => {
   initialRender();
   categoryContainer.addEventListener("click", applyFilter);
   categoryContainer.addEventListener("click", renderPopularProducts);
