@@ -26,7 +26,7 @@ localStorage.setItem("cart",JSON.stringify(cartList));
 
 
 const renderProduct = (product) => {
-  const { nombre, descripcion, precio, img } = product;
+  const {id, nombre, descripcion, precio, img } = product;
 
   return `
   <article class="filter-results-card">
@@ -44,7 +44,7 @@ const renderProduct = (product) => {
         <p class="card-price">$ ${precio}</p>
       </div>
       <div class="filter-btn-container">
-        <button type="button" class="agregar-btn">Agregar</button>
+        <button onclick="agregarProducto(${id})" type="button" class="agregar-btn">Agregar</button>
       </div>
     </div>
   </article>`;
@@ -180,6 +180,45 @@ return`
 
 `
 
+};
+
+// PARA IMPRIMIR PRODUCTOS EN CARRITO 
+
+function agregarProducto(id){
+  const item = stockProductos.find((prod) => prod.id === id)
+  cart.push(item)
+  mostrarCarrito()
+}
+
+const mostrarCarrito = () => {
+  const cartBody = document.querySelector('.cart .cart-container')
+  // console.log(cartBody)
+  cart.forEach((prod) => {
+    const {id, nombre, img, descripcion, cantidad, precio} = prod
+    
+
+    cartBody.innerHTML += `
+    <div class="recomend-img-container">
+                <img
+                  src="${img}"
+                  alt="Pizza"
+                  srcset=""
+                />
+              </div>
+              <div class="recomend-card-text">
+                <p class="card-title">${nombre}</p>
+                <p class="card-subtitle">${descripcion}</p>
+                <p class="card-price">$ ${precio}</p>
+              </div>
+              <div class="cart-btn-container">
+                <button type="button" class="restar-btn">-</button>
+                <p>X</p>
+                <button type="button" class="sumar-btn">+</button>
+              </div>
+    `
+    
+
+})
 };
 
 const renderCart=()=>{
