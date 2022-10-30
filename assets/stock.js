@@ -20,7 +20,7 @@ const stockProductos = [
   {
     id: 3,
     nombre: "La Charly García",
-    descripcion: "¡BASTA!",
+    descripcion: "¡SAYNOMORE!",
     precio: 380,
     categoria: "pizzas",
     popular: true,

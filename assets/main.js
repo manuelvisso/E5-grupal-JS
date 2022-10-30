@@ -3,14 +3,15 @@ const categoryContainer = document.querySelector(".category-card-container");
 const categorias = document.querySelectorAll(".categoria");
 const resultsTitle = document.querySelector(".results-title");
 const productsCart=document.querySelector(".cart-container");
-const precioFinal=document.querySelector(".cart-total-amount");
 const btnComprar=document.querySelector(".comprar-btn");
-const cartBtn=document.querySelector(".cart-close-btn");
 const btnDelete=document.querySelector(".delete-order");
-const cartMenu=document.querySelector(".cart");
-const successModal = document.querySelector(".add-modal");
-
-
+const barsMenu=document.querySelector(".navbar");
+const overlay=document.querySelector(".overlay");
+const successModal=document.querySelector(".add-modal")
+const total=document.querySelector(".total")
+const cartMenu=document.querySelector(".cart")
+const cartBtn=document.querySelector(".cart-label")
+const productsContainer=document.querySelector("filter-results-card");
 
 let cart=JSON.parse(localStorage.getItem("cart"))||[];
 
@@ -106,13 +107,58 @@ const applyFilter = (e) => {
   changeFilter(e);
 };
 
+//Abrir Carrito
+const toggleMenu = () => {
+  barsMenu.classList.toggle("open-menu");
+  if (cartMenu.classList.contains("open-cart")) {
+    cartMenu.classList.remove("open-cart");
+    return;
+  }
+  overlay.classList.toggle("show-overlay");
+};
+
+
+
+const toggleCart = () => {
+  cartMenu.classList.toggle("open-cart");
+  if (cartMenu.classList.contains("open-menu")) {
+    cartMenu.classList.remove("open-menu");
+    return;
+  }
+  overlay.classList.toggle("show-overlay");
+};
+
+const closeOnClick = (e) => {
+  if (!e.target.classList.contains("navbar-link")) return;
+  barsMenu.classList.remove("open-menu");
+  overlay.classList.remove("show-overlay");
+};
+
+const closeOnScroll = () => {
+  if (
+    !barsMenu.classList.contains("open-menu") &&
+    !cartMenu.classList.contains("open-cart")
+  )
+    return;
+  barsMenu.classList.remove("open-menu");
+  cartMenu.classList.remove("open-cart");
+  overlay.classList.remove("show-overlay");
+};
+
+const closeOnOverlayClick = () => {
+  barsMenu.classList.remove("open-menu");
+  cartMenu.classList.remove("open-cart");
+  overlay.classList.remove("show-overlay");
+};
+
+
 
 
 //agregar al carrito
 
 const renderCartProduct=(cartProduct)=>{
 
- const { id,nombre ,descripcion, precio, img ,cantidad,Total} = cartProduct;
+ const { id,nombre ,descripcion, precio, img ,cantidad} = cartProduct;
 return`
 <div class="cart-items-container">
             <article class="cart-card">
@@ -120,9 +166,9 @@ return`
                 <img src${img} alt=" Producto en el carrito" />
               </div>
               <div class="product-info">
-                <p class="card-title">${nombre}</p>
-                <p class="card-subtitle">${descripcion}</p>
-                <p class="card-price">${precio}</p>
+                <p class="cart-title">${nombre}</p>
+                <p class="cart-subtitle">${descripcion}</p>
+                <p class="cart-price">${precio}</p>
               </div>
               <div class="cart-btn-container">
                 <button type="button" class="restar-btn"data-id=${id} >-</button>
@@ -132,39 +178,14 @@ return`
 
               </div>
 
-              </article>
-              <div class="cart-subtotal-container">
-              <p>
-                <span class="cart-subtotal-title">Subtotal:</span>
-                <span class="cart-subtotal-amount">$4.890</span>
-              </p>
-              <p>
-                <span class="cart-subtotal-title">Envío:</span>
-                <span class="cart-subtotal-amount">Gratis</span>
-              </p>
-            </div>
-            <div class="cart-linea"></div>
-            <div class="cart-subtotal-container">
-              <p>
-                <span class="cart-total-title">Total:</span>
-                <span class="cart-total-amount">${Total}</span>
-              </p>
-            </div>
-            <div class="cart-comprar-container">
-              <button type="submit" class="comprar-btn">COMPRAR</button>
-              <button type="submit" class="delete-order">CANCELAME</button>
-              <a href="#vermas" class="ver-mas">Ver más productos</a>
-            </div>
-            
-
 `
 
-}
+};
 
 const renderCart=()=>{
 
 if (!cart.length){
-productsCart.innerHTML=`<p class="nada">No Hay Productos en el carrito.</p>`;
+  productsCart.innerHTML=`<p class="nada">No Hay Productos en el carrito.</p>`;
 return;
 
 }
@@ -172,7 +193,7 @@ productsCart.innerHTML=cart.map(renderCartProduct).join("")
 }
 
 
-const Total = () => {
+const getTotal = () => {
   return cart.reduce(
     (acc, cur) => acc + Number(cur.precio) * Number(cur.cantidad),
     0
@@ -181,7 +202,7 @@ const Total = () => {
 
 const showTotal=()=>{
 
-  Total.innerHTML=`${Total().toFixed(2)}`;
+  total.innerHTML=`${getTotal().toFixed(2)}`;
 
 }
 
@@ -200,7 +221,7 @@ btn.classList.remove("disabled")
 
 const addUnitToProduct=(product)=>{
   cart=cart.map((cartProduct)=>{
-    return cartProduct.id===product.id
+    return productsCart.id===product.id
     ?{...cartProduct,cantidad:cartProduct.cantidad+1}  
 :cartProduct
 });
@@ -240,7 +261,7 @@ const showSuccessModal = (msg) => {
 
 
 const addProduct = (e) => {
-  if (!e.target.classList.contains("btn-add")) return;
+  if (!e.target.classList.contains("agregar-btn")) return;
   const {id,nombre ,descripcion, precio, img ,cantidad } = e.target.dataset;
 
   const product = crearData(id,nombre ,descripcion, precio, img ,cantidad);
@@ -316,7 +337,7 @@ const completarCompra = () => {
     "La compra se ha realizado correctamente"
   );
 };
-const BorrarCarrito= () => {
+const borrarCarrito= () => {
   completarCarrito(
     "¿Está seguro de que desea vaciar el carrito?",
     "No hay productos en el carrito"
@@ -331,9 +352,17 @@ const BorrarCarrito= () => {
   initialRender();
   categoryContainer.addEventListener("click", applyFilter);
   categoryContainer.addEventListener("click", renderPopularProducts)
- 
+  document.addEventListener("DOMContentLoaded", renderCart);
+  document.addEventListener("DOMContentLoaded", showTotal);
+btnComprar.addEventListener("click",completarCompra);
 
-  ;
+cartBtn.addEventListener("click",toggleCart)
+productsCart.addEventListener("click",cantidades);
+productsContainer.addEventListener("click",addProduct);
+barsMenu.addEventListener("click",closeOnClick)
+window.addEventListener("scroll", closeOnScroll);
+overlay.addEventListener("click", closeOnOverlayClick);
+cartBtn.addEventListener("click", toggleCart);
 };
 
 init();

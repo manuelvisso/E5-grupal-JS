@@ -13,7 +13,7 @@
     ></script>
   </head>
   <body>
-    <div class="overlay"></div>
+    
     <header>
       <div class="logo-container">
         <img
@@ -27,21 +27,59 @@
           <li class="navbar-item">
             <a href="#home"> <img src="/assets/img/Home.svg" alt="" /> Home</a>
           </li>
-          <li class="navbar-item">
+          <div class="cart-label">
             <a href="#cart"> <img src="/assets/img/Fill 7.svg" alt="" /></a>
-          </li>
+
+            </div>
+          <div class="cart">
+            <button type="button" class="cart-close-btn">x</button>
+            <p>Tus productos</p>
+<div class="cart-container">
+
+</div>
+
+              <p class="card-title"></p>
+              <p class="card-subtitle"></p>
+              <p class="card-price"></p>
+              <span class="divider"></span>
+              <div class="cart-total">
+                <p>Total:</p>
+                <span class="total">0.00 </span>
+              </div>
+
+
+            <div class="cart-btn-container">
+              <button type="button" class="restar-btn">-</button>
+              <p>X</p>
+              <button type="button" class="sumar-btn">+</button>
+              
+              <div class="cart-comprar-container">
+                <button type="submit" class="comprar-btn">COMPRAR</button>
+                <a href="#vermas" class="ver-mas">Ver más productos</a>
+              </div>
+            </div>
+            
+          </div>
+          <div class="overlay"></div>
+        
+          
+
+
           <li class="navbar-item">
             <a href="#perfil">
               <i class="fa-solid fa-user" id="account"></i>
             </a>
           </li>
         </ul>
-     <div class="cart">
-      <p>Tus productos</p>
+        
+      </nav>
+
+
+<!--<div class="cart">
         <div class="cart-container">
-         <button type="button" class="cart-close-btn">x</button>
-          
-        <!-- <div class="cart-items-container">
+          <button type="button" class="cart-close-btn">x</button>
+          <p>Tus productos</p>
+          <div class="cart-items-container">
             <article class="cart-card">
               <div class="recomend-img-container">
                 <img
@@ -56,10 +94,41 @@
                 <p class="card-price">$ 3650</p>
               </div>
               <div class="cart-btn-container">
-             <button type="button" class="restar-btn">-</button>
+                <button type="button" class="restar-btn">-</button>
                 <p>X</p>
                 <button type="button" class="sumar-btn">+</button>
-              </div>                
+              </div>
+              <p>
+                <span class="cart-total-title">Total:</span>
+                <span class="cart-total-amount">$4.890</span>
+              </p>
+
+            </article>
+
+            <article class="cart-card">
+              <div class="recomend-img-container">
+                <img
+                  src="/assets/img/pexels-ana-madeleine-uribe-2762939.jpg"
+                  alt="Pizza"
+                  srcset=""
+                />
+              </div>
+              <div class="recomend-card-text">
+                <p class="card-title">Bennazianna</p>
+                <p class="card-subtitle">La más completa</p>
+                <p class="card-price">$ 3650</p>
+              </div>
+              <div class="cart-btn-container">
+                <button type="button" class="restar-btn">-</button>
+                <p>X</p>
+                <button type="button" class="sumar-btn">+</button>
+              </div>
+              <div class="cart-subtotal-container">
+                <p>
+                  <span class="cart-total-title">Total:</span>
+                  <span class="cart-total-amount">$4.890</span>
+                </p>
+              </div>
             </article>
 
             <article class="cart-card">
@@ -81,27 +150,7 @@
                 <button type="button" class="sumar-btn">+</button>
               </div>
             </article>
-
-            <article class="cart-card">
-              <div class="recomend-img-container">
-                <img
-                  src="/assets/img/pexels-ana-madeleine-uribe-2762939.jpg"
-                  alt="Pizza"
-                  srcset=""
-                />
-              </div>
-              <div class="recomend-card-text">
-                <p class="card-title">Bennazianna</p>
-                <p class="card-subtitle">La más completa</p>
-                <p class="card-price">$ 3650</p>
-              </div>
-              <div class="cart-btn-container">
-                <button type="button" class="restar-btn">-</button>
-                <p>X</p>
-                <button type="button" class="sumar-btn">+</button>
-              </div>
-            </article>
-          </div> -->
+          </div> 
           <div class="cart-subtotal-container">
             <p>
               <span class="cart-subtotal-title">Subtotal:</span>
@@ -121,12 +170,11 @@
           </div>
           <div class="cart-comprar-container">
             <button type="submit" class="comprar-btn">COMPRAR</button>
-            <button type="submit" class="delete-order">CANCELAME</button>
             <a href="#vermas" class="ver-mas">Ver más productos</a>
           </div>
         </div>
-     </div>
-      </nav>
+      </div>
+      </nav>-->
     </header>
     <main>
       <div class="hero-container">
@@ -383,7 +431,7 @@
         <p>Hecho️ con ❤ en <span>NUCBAZAPPI</span></p>
       </div>
     </footer>
-    <div class="add-modal"></div>
+
     <script src="/assets/stock.js"></script>
     <script src="/assets/main.js"></script>
   </body>
